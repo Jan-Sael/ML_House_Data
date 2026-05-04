@@ -1,135 +1,190 @@
-# ML_House_Data
-
-
-
-
-# Linear Regression
-# 🏠 Housing Price Prediction — Machine Learning Project (Random Forest)
+# 🏠 ML_House_Data — Housing Price Prediction (Collaborative Project)
 #
-# ## 📌 Project Summary
-# This project builds a machine learning model to predict housing prices using a 
-# Random Forest Regressor. Beyond model accuracy, the focus is on extracting 
-# actionable insights from data — aligning technical modeling with business value.
+# ---
 #
-# The project demonstrates:
-# - End-to-end ML workflow (data → model → evaluation → insights)
-# - Model interpretability via feature importance
-# - Practical understanding of regression metrics
-# - Structured experimentation with hyperparameter tuning
+# ## 📌 Project Overview
+#
+# This project explores multiple machine learning approaches to predict housing prices,
+# combining baseline models, tree-based methods, and advanced boosting algorithms.
+#
+# The objective is not only to achieve strong predictive performance, but also to:
+# - Compare model families
+# - Understand key price drivers
+# - Translate model outputs into business-relevant insights
+#
+# This was developed as a collaborative effort, with different model families explored
+# and evaluated in parallel.
 #
 # ---
 #
 # ## 🎯 Business Context
-# Accurate housing price prediction is critical for:
-# - Real estate valuation
-# - Investment decision-making
-# - Risk assessment in lending
 #
-# This model aims to support data-driven pricing strategies by identifying 
-# the key drivers behind property value.
+# Housing price prediction is a high-impact use case in:
+# - Real estate valuation
+# - Investment strategy
+# - Mortgage and risk assessment
+#
+# The ability to accurately model price drivers enables:
+# 👉 Better pricing decisions
+# 👉 Reduced financial risk
+# 👉 Data-driven market insights
 #
 # ---
 #
-# ## 🧠 Model Choice
-# The core model used is:
-# 👉 Random Forest Regressor (from scikit-learn)
+# ## 🧠 Models Explored
 #
-# Why Random Forest?
-# - Handles non-linear relationships well
-# - Robust against overfitting (vs single decision trees)
-# - Provides built-in feature importance (interpretability)
+# ### 1. Linear Models (Baseline)
+# - Linear Regression
+#
+# Purpose:
+# - Establish a simple, interpretable baseline
+# - Understand linear relationships in the dataset
+#
+# Limitation:
+# - Cannot capture non-linear interactions effectively
+#
+# ---
+#
+# ### 2. Tree-Based Models
+#
+# #### 🌳 Random Forest Regressor
+#
+# Key characteristics:
+# - Ensemble of decision trees
+# - Reduces variance vs single trees
+# - Handles non-linear relationships
+#
+# Configuration example:
+# - n_estimators = 200
+# - max_depth = 20
+#
+# Strengths:
+# - Strong baseline for tabular data
+# - Built-in feature importance
+#
+# ---
+#
+# ### 3. Boosting Models
+#
+# Advanced ensemble methods were implemented:
+#
+# - XGBoost Regressor
+# - AdaBoost Regressor
+# - Gradient Boosting Regressor
+#
+# These models iteratively improve predictions by correcting previous errors,
+# making them highly effective for structured data problems.
 #
 # ---
 #
 # ## ⚙️ Tech Stack
+#
 # - Python
 # - pandas / numpy
 # - scikit-learn
 # - matplotlib
-# - (optional experimentation with XGBoost)
+# - xgboost
 #
 # ---
 #
 # ## 🔄 Workflow
 #
 # ### 1. Data Preparation
-# - Load cleaned dataset
-# - Define features (X) and target (y)
+# - Clean dataset
+# - Feature/target split
 # - Train-test split
 #
-# ### 2. Model Training
-# Random Forest with controlled complexity:
+# ### 2. Feature Engineering
 #
-# - n_estimators = 200
-# - max_depth = 20
-# - min_samples_split = 2
+# Example:
+# - distance_center → derived from latitude & longitude
 #
-# ### 3. Evaluation Metrics
-# The model is evaluated using:
+# Goal:
+# - Capture spatial relationships
+# - Improve model learning without losing raw features
 #
-# - R² Score → goodness of fit
+# ---
+#
+# ### 3. Model Training
+#
+# Each model family was trained and evaluated independently to allow comparison.
+#
+# ---
+#
+# ### 4. Hyperparameter Tuning
+#
+# Optimization focused on:
+# - n_estimators
+# - max_depth
+# - learning_rate
+# - subsample
+# - colsample_bytree
+#
+# Objective:
+# - Balance bias vs variance
+# - Improve generalization
+# - Maintain computational efficiency
+#
+# ---
+#
+# ## 📊 Model Evaluation
+#
+# Metrics used:
+#
+# - R² Score → explained variance
 # - MAE → average prediction error
-# - RMSE → penalty on large errors
+# - RMSE → sensitivity to large errors
 # - MAPE → percentage-based error (business-friendly)
 #
-# This combination ensures both statistical and practical interpretability.
+# ---
+#
+# ## 📈 Results (Test Set)
+#
+# | Model              | MAE     | R² Score |
+# |--------------------|--------|---------|
+# | XGBoost            | 6.4e4  | 0.89    |
+# | Gradient Boosting  | 6.7e4  | 0.88    |
+# | AdaBoost           | 9.3e4  | 0.85    |
 #
 # ---
 #
-# ## 📊 Results & Interpretation
+# ## 🔍 Key Findings
 #
-# Key observations:
-# - The model captures non-linear relationships effectively
-# - Train vs Test performance indicates controlled overfitting
-# - Feature importance highlights the strongest price drivers
-#
-# This enables moving from "prediction" → "decision support"
-#
-# ---
-#
-# ## 🔍 Feature Importance
-#
-# Feature importance analysis answers:
-# 👉 What actually drives house prices?
-#
-# This is critical in business contexts where stakeholders need:
-# - transparency
-# - explainability
-# - justification of model outputs
+# - Boosting models significantly outperformed baseline models
+# - XGBoost achieved the best overall performance
+# - Random Forest provided strong interpretability via feature importance
+# - Feature engineering (distance_center) improved performance moderately
+# - Slight overfitting observed, but generalization remained strong
 #
 # ---
 #
-# ## ⚡ Hyperparameter Tuning
+# ## 🏆 Final Model Selection
 #
-# A GridSearchCV approach is used to optimize:
-# - max_depth
-# - n_estimators
+# 👉 XGBoost Regressor
 #
-# This ensures the model is not just functional, but tuned for performance.
+# Selected due to:
+# - Highest predictive accuracy
+# - Strong handling of non-linear relationships
+# - Robust performance on unseen data
 #
 # ---
 #
 # ## 🚧 Limitations
 #
 # - Limited hyperparameter search space
-# - No advanced feature engineering
 # - No external data enrichment
-# - No model comparison benchmark (e.g., XGBoost vs Linear Regression)
+# - Feature engineering still minimal
+# - No deployment layer (API/dashboard)
 #
 # ---
 #
 # ## 🔮 Future Improvements
 #
-# Planned upgrades:
-#
-# - Expand tuning (RandomizedSearch / Bayesian optimization)
-# - Add feature engineering (interaction terms, scaling where relevant)
-# - Compare multiple models:
-#   - XGBoost
-#   - Gradient Boosting
-#   - Linear Regression (baseline)
-# - Residual diagnostics
-# - Deploy model (API or dashboard)
+# - Advanced tuning (Bayesian Optimization)
+# - More feature engineering (interaction terms, time/location effects)
+# - Model explainability (SHAP values)
+# - Deployment (Flask / FastAPI)
+# - Integration with real-time data sources
 #
 # ---
 #
@@ -138,99 +193,29 @@
 # 1. Install dependencies:
 #    pip install pandas numpy scikit-learn matplotlib xgboost
 #
-# 2. Launch notebook:
+# 2. Launch Jupyter:
 #    jupyter notebook
 #
-# 3. Open:
-#    03_random_forest.ipynb - Features 2nd attempt.ipynb
+# 3. Run notebooks in order:
+#    - Linear Regression
+#    - Random Forest
+#    - Boosting Models
 #
 # ---
 #
 # ## 💡 Key Takeaway
 #
-# This project goes beyond building a model — it focuses on translating 
-# machine learning outputs into interpretable, business-relevant insights.
+# This project demonstrates that:
 #
-# It reflects a practical approach to data science:
-# 👉 not just predicting outcomes, but enabling better decisions.
-#
-# ---
-#
-# ## 👤 Author
-# Alex
-#
-# Background:
-# - Sales & Customer Operations (SaaS / Industrial Tech)
-# - Transitioning into Data & Machine Learning
-# - Strong interest in applying AI to real-world business problems
+# 👉 Model selection matters more than model complexity alone  
+# 👉 Boosting methods dominate in structured/tabular data  
+# 👉 Business value comes from interpretation, not just prediction  
 #
 # ---
-
-
-
-# Random Tree
-
-
-
-
-# Boosting 
-## Model Development: Boosting Algorithms
-In this project, we focused on implementing and optimizing ensemble boosting models for house price prediction. The models explored include:
-* XGBoost Regressor 
-* AdaBoost Regressor
-* Gradient Boosting Regressor 
-
-These models were selected due to their ability to capture non-linear relationships and interactions between features, which are common in real estate data. 
-
-## Hyperparameter Tuning 
-
-To improve model performance, hyperparameters were optimized (for example, number of estimators, learning rate, max depth, sub-sampling).
-
-The tuning process aimed to balance:
-* Model complexity
-* Overfitting vs. Generalization
-* Computational efficiency 
-
-XGBoost, in particualr, benefited from tuning parametrs such as:
-
-* n_estimators
-* learning_rate
-* max_depth
-* subsample
-* colsample_bytree
-
-## Feature Engineering 
-
-To enhance predictive performance, additional features were created while retaining the original dataset:
-
-* Distance from city center (distance_center): derived from latitude and longitude
-* Engineered features were added without removing original variables to preserve information 
-
-This approach ensured that:
-* Spatial relationships were maintained
-* The model could learn both raw and transofmred representations 
-
-## Model Evaluation 
-
-Models were evaluated using:
-
-* Mean Absolute Error (MAE): measures average prediction error 
-* R-squared: measures explained variance 
-
-## Key Results (Test Set)
-| Model                   | MAE           | R_squared     | 
-|-------------------      |-------------  |------------   |
-| XGBoost                 | 6.4e4         | 0.89          | 
-| AdaBoost                | 9.3e4         | 0.85          | 
-| Gradient                | 6.7e4         | 0.88          | 
-## Key Findings
-
-* Boosting models significantly outperformed baseline models (Linear Regression, KNN)
-* XGBoost achieved the best overall performance
-* Feature engineering provided a modest improvement, especially for XGBoost
-* All models showed slight overfitting, but generalization remained strong
-
-## Conclusion
-
-* XGBoost was selected as the final model due to its superior predictive performance and ability to generalize well to unseen data. 
-
+#
+# ## 👥 Contributors
+#
+# - Jan Sael — Model development of Random Forest.Ipynb 
+# - Alan
+# - Nicole
+# ---
