@@ -140,11 +140,11 @@
 #
 # ## 📈 Results (Test Set)
 #
-# | Model              | MAE     | R² Score |
-# |--------------------|--------|---------|
-# | XGBoost            | 6.4e4  | 0.89    |
-# | Gradient Boosting  | 6.7e4  | 0.88    |
-# | AdaBoost           | 9.3e4  | 0.85    |
+| Model              | MAE     | R² Score |
+|--------------------|--------|---------|
+| XGBoost            | 6.4e4  | 0.89    |
+| Gradient Boosting  | 6.7e4  | 0.88    |
+| AdaBoost           | 9.3e4  | 0.85    |
 #
 # ---
 #
