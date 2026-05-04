@@ -42,6 +42,7 @@
 #
 # Limitation:
 # - Cannot capture non-linear interactions effectively
+# - Requires extensive feature engineering
 #
 # ---
 #
@@ -217,5 +218,5 @@
 #
 # - Jan Sael — Model development of Random Forest.Ipynb 
 # - Alan
-# - Nicole
+# - Nicole - Model development of Linear Regression.ipynb
 # ---
