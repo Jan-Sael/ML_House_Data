@@ -217,6 +217,6 @@
 # ## 👥 Contributors
 #
 # - Jan Sael — Model development of Random Forest.Ipynb 
-# - Alan
+# - Alan - Model Development of Boosting Models
 # - Nicole - Model development of Linear Regression.ipynb
 # ---
